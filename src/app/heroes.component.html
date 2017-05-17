@@ -12,4 +12,9 @@
   </h2>
   <button (click)="gotoDetail()">ViewDetails</button>
 </div>
-<!-- <hero-detail [hero]="selectedHero"></hero-detail> -->
+<div>
+  <label>Hero name:</label> <input #heroName />
+  <button (click)="add(heroName.value); heroName.value=''">
+    Add
+  </button>
+</div>
