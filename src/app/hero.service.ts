@@ -4,7 +4,6 @@ import { Headers, Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 import { Hero } from './hero';
-import { HEROES } from './mock-heroes';
 
 @Injectable()
 export class HeroService {
@@ -22,7 +21,7 @@ export class HeroService {
   }
 
   update(hero: Hero): Promise<Hero> {
-    const url = '${this.heroesUrl}/${hero.id}';
+    const url = `${this.heroesUrl}/${hero.id}`;
     return this.http.put(url, JSON.stringify(hero), {headers: this.headers})
                     .toPromise()
                     .then(() => hero)
@@ -30,7 +29,7 @@ export class HeroService {
   }
 
   delete(id: number): Promise<void> {
-    const url = '${this.heroesUrl}/${id}';
+    const url = `${this.heroesUrl}/${id}`;
     return this.http.delete(url, {headers: this.headers})
                 .toPromise()
                 .then(() => null)
@@ -56,7 +55,7 @@ export class HeroService {
   }
 
   getHero(id: number): Promise<Hero> {
-    const url = '${this.heroesUrl}/${id}';
+    const url = `${this.heroesUrl}/${id}`;
     return this.http.get(url)
                 .toPromise()
                 .then(response => response.json().data as Hero)
